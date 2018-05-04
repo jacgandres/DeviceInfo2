@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="activity_name">@string/launcher_name</string>
-    <string name="app_name">DeviceInfo</string>
+    <string name="app_name">DeviceInfo2</string>
     <string name="ionic_app_id">8ce09bef</string>
     <string name="ionic_channel_name">Master</string>
     <string name="ionic_debug">true</string>

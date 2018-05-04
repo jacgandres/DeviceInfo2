@@ -1,4 +1,4 @@
-#Fri May 04 01:37:02 COT 2018
+#Fri May 04 01:47:28 COT 2018
 base.0=D\:\\Desarrollos\\Angular\\Angular2\\CURSO\\DeviceInfoIonic\\DeviceInfo2\\platforms\\android\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\0
 renamed.0=classes.dex
 file.0=D\:\\Desarrollos\\Angular\\Angular2\\CURSO\\DeviceInfoIonic\\DeviceInfo2\\platforms\\android\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\0\\classes.dex

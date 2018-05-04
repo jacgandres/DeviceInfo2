@@ -1,11 +1,11 @@
 [
     {
-        "merged": "D:\\Desarrollos\\Angular\\Angular2\\CURSO\\DeviceInfoIonic\\DeviceInfo2\\platforms\\android\\app\\build\\intermediates\\res\\merged\\debug\\drawable-port-xhdpi_screen.png.flat",
-        "source": "D:\\Desarrollos\\Angular\\Angular2\\CURSO\\DeviceInfoIonic\\DeviceInfo2\\platforms\\android\\app\\src\\main\\res\\drawable-port-xhdpi\\screen.png"
-    },
-    {
         "merged": "D:\\Desarrollos\\Angular\\Angular2\\CURSO\\DeviceInfo\\platforms\\android\\app\\build\\intermediates\\res\\merged\\debug\\drawable-port-mdpi_screen.png.flat",
         "source": "D:\\Desarrollos\\Angular\\Angular2\\CURSO\\DeviceInfo\\platforms\\android\\app\\src\\main\\res\\drawable-port-mdpi\\screen.png"
+    },
+    {
+        "merged": "D:\\Desarrollos\\Angular\\Angular2\\CURSO\\DeviceInfoIonic\\DeviceInfo2\\platforms\\android\\app\\build\\intermediates\\res\\merged\\debug\\drawable-port-xhdpi_screen.png.flat",
+        "source": "D:\\Desarrollos\\Angular\\Angular2\\CURSO\\DeviceInfoIonic\\DeviceInfo2\\platforms\\android\\app\\src\\main\\res\\drawable-port-xhdpi\\screen.png"
     },
     {
         "merged": "D:\\Desarrollos\\Angular\\Angular2\\CURSO\\DeviceInfoIonic\\DeviceInfo2\\platforms\\android\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi_icon.png.flat",

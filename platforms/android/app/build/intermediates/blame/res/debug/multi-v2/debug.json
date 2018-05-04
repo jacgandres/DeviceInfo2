@@ -6,18 +6,18 @@
                 {
                     "source": "D:\\Desarrollos\\Angular\\Angular2\\CURSO\\DeviceInfoIonic\\DeviceInfo2\\platforms\\android\\app\\src\\main\\res\\values\\strings.xml",
                     "from": {
-                        "startLines": "-1,-1,5,7,6,10,8,9,-1",
-                        "startColumns": "-1,-1,4,4,4,4,4,4,-1",
-                        "startOffsets": "-1,-1,226,321,276,503,375,444,-1",
-                        "endColumns": "-1,-1,49,53,44,48,68,58,-1",
-                        "endOffsets": "-1,-1,271,370,316,547,439,498,-1"
+                        "startLines": "-1,2,-1,-1,-1,-1,-1,-1,-1",
+                        "startColumns": "-1,4,-1,-1,-1,-1,-1,-1,-1",
+                        "startOffsets": "-1,55,-1,-1,-1,-1,-1,-1,-1",
+                        "endColumns": "-1,48,-1,-1,-1,-1,-1,-1,-1",
+                        "endOffsets": "-1,99,-1,-1,-1,-1,-1,-1,-1"
                     },
                     "to": {
                         "startLines": "2,3,4,5,6,7,8,9,10",
                         "startColumns": "4,4,4,4,4,4,4,4,4",
-                        "startOffsets": "55,119,167,217,271,316,365,434,493",
-                        "endColumns": "63,47,49,53,44,48,68,58,58",
-                        "endOffsets": "114,162,212,266,311,360,429,488,547"
+                        "startOffsets": "55,119,168,218,272,317,366,435,494",
+                        "endColumns": "63,48,49,53,44,48,68,58,58",
+                        "endOffsets": "114,163,213,267,312,361,430,489,548"
                     }
                 }
             ]

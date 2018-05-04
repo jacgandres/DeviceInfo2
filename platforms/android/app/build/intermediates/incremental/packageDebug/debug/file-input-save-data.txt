@@ -1,5 +1,5 @@
 #Internal package file, do not edit.
-#Fri May 04 01:37:02 COT 2018
+#Fri May 04 01:47:29 COT 2018
 76.base=D\:\\Desarrollos\\Angular\\Angular2\\CURSO\\DeviceInfoIonic\\DeviceInfo2\\platforms\\android\\app\\build\\intermediates\\assets\\debug
 5.base=D\:\\Desarrollos\\Angular\\Angular2\\CURSO\\DeviceInfoIonic\\DeviceInfo2\\platforms\\android\\app\\build\\intermediates\\assets\\debug
 91.file=D\:\\Desarrollos\\Angular\\Angular2\\CURSO\\DeviceInfoIonic\\DeviceInfo2\\platforms\\android\\app\\build\\intermediates\\assets\\debug\\www\\assets\\fonts\\roboto-medium.woff
