@@ -22,11 +22,11 @@ webpackEmptyAsyncContext.id = 112;
 
 var map = {
 	"../pages/contactos/contactos.module": [
-		290,
+		289,
 		2
 	],
 	"../pages/inicio/inicio.module": [
-		289,
+		290,
 		1
 	],
 	"../pages/otro/otro.module": [
@@ -90,9 +90,9 @@ var TabsPage = /** @class */ (function () {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__contactos_contactos__ = __webpack_require__(202);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__contactos_contactos__ = __webpack_require__(201);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return __WEBPACK_IMPORTED_MODULE_0__contactos_contactos__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__inicio_inicio__ = __webpack_require__(201);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__inicio_inicio__ = __webpack_require__(202);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return __WEBPACK_IMPORTED_MODULE_1__inicio_inicio__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__otro_otro__ = __webpack_require__(203);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return __WEBPACK_IMPORTED_MODULE_2__otro_otro__["a"]; });
@@ -107,77 +107,10 @@ var TabsPage = /** @class */ (function () {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return InicioPage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(32);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_device__ = __webpack_require__(155);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-var InicioPage = /** @class */ (function () {
-    function InicioPage(navCtrl, navParams, _device) {
-        this.navCtrl = navCtrl;
-        this.navParams = navParams;
-        this._device = _device;
-        this.Dispositivo = {};
-    }
-    InicioPage.prototype.ionViewDidLoad = function () {
-        this.obtnerInfoDelDispositivo();
-    };
-    InicioPage.prototype.obtnerInfoDelDispositivo = function () {
-        console.log('Entrada Pagina de Inicio');
-        console.log(JSON.stringify(this._device));
-        console.log('Device UUID is: ' + this._device.uuid);
-        console.log('Device manufacturer is: ' + this._device.manufacturer);
-        console.log('Device cordova is: ' + this._device.cordova);
-        console.log('Device model is: ' + this._device.model);
-        console.log('Device version is: ' + this._device.version);
-        console.log('Device isVirtual is: ' + this._device.isVirtual);
-        console.log('Device serial is: ' + this._device.serial);
-        this.Dispositivo = this._device;
-        this.terminarRefresh();
-    };
-    InicioPage.prototype.RefrescarPagina = function (refresher) {
-        this.seRefresco = refresher;
-        this.obtnerInfoDelDispositivo();
-    };
-    InicioPage.prototype.terminarRefresh = function () {
-        console.log(this.seRefresco);
-        if (this.seRefresco != null)
-            this.seRefresco.complete();
-    };
-    InicioPage = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-inicio',template:/*ion-inline-start:"D:\Desarrollos\Angular\Angular2\CURSO\DeviceInfoIonic\DeviceInfo2\src\pages\inicio\inicio.html"*/'<ion-header>\n\n\n\n  <ion-navbar>\n\n    <ion-title>Inicio</ion-title>\n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n\n\n<ion-content padding>\n\n\n\n  <ion-refresher (ionRefresh)="RefrescarPagina($event)">\n\n    <ion-refresher-content>Se esta refrescando la pagina....</ion-refresher-content>\n\n  </ion-refresher>\n\n  \n\n  <ion-card>\n\n    <ion-card-header>\n\n      Informacion del dispositivo\n\n    </ion-card-header>\n\n\n\n\n\n    <ion-list>\n\n      <button ion-item>\n\n        <ion-icon name="ios-phone-portrait-outline" item-start></ion-icon>\n\n          Marca de Celular: {{ Dispositivo.manufacturer }}\n\n      </button>\n\n      \n\n      <button ion-item>\n\n        <ion-icon name="md-barcode" item-start></ion-icon>\n\n          Modelo del Celular: {{ Dispositivo.model }}\n\n      </button>\n\n      \n\n      <button ion-item>\n\n        <ion-icon name="ios-body-outline" item-start></ion-icon>\n\n          Version de Cordova: {{ Dispositivo.cordova }}\n\n      </button>\n\n      \n\n      <button ion-item>\n\n        <ion-icon name="ios-create-outline" item-start></ion-icon>\n\n          Serial del Celular: {{ Dispositivo.serial }}\n\n      </button>\n\n       \n\n    </ion-list>\n\n  </ion-card>\n\n\n\n  <ion-card>\n\n    <ion-card-header>\n\n        Informacion de la Red\n\n    </ion-card-header>\n\n      <button ion-item>\n\n        <ion-icon name="md-git-network" item-start></ion-icon>\n\n          Serial del Celular: \n\n      </button>\n\n  </ion-card>\n\n\n\n</ion-content>'/*ion-inline-end:"D:\Desarrollos\Angular\Angular2\CURSO\DeviceInfoIonic\DeviceInfo2\src\pages\inicio\inicio.html"*/,
-        }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */],
-            __WEBPACK_IMPORTED_MODULE_2__ionic_native_device__["a" /* Device */]])
-    ], InicioPage);
-    return InicioPage;
-}());
-
-//# sourceMappingURL=inicio.js.map
-
-/***/ }),
-
-/***/ 202:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ContactosPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(32);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_contacts__ = __webpack_require__(157);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_contacts__ = __webpack_require__(155);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -282,6 +215,73 @@ var ContactosPage = /** @class */ (function () {
 
 /***/ }),
 
+/***/ 202:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return InicioPage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(32);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_device__ = __webpack_require__(157);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+var InicioPage = /** @class */ (function () {
+    function InicioPage(navCtrl, navParams, _device) {
+        this.navCtrl = navCtrl;
+        this.navParams = navParams;
+        this._device = _device;
+        this.Dispositivo = {};
+    }
+    InicioPage.prototype.ionViewDidLoad = function () {
+        this.obtnerInfoDelDispositivo();
+    };
+    InicioPage.prototype.obtnerInfoDelDispositivo = function () {
+        console.log('Entrada Pagina de Inicio');
+        console.log(JSON.stringify(this._device));
+        console.log('Device UUID is: ' + this._device.uuid);
+        console.log('Device manufacturer is: ' + this._device.manufacturer);
+        console.log('Device cordova is: ' + this._device.cordova);
+        console.log('Device model is: ' + this._device.model);
+        console.log('Device version is: ' + this._device.version);
+        console.log('Device isVirtual is: ' + this._device.isVirtual);
+        console.log('Device serial is: ' + this._device.serial);
+        this.Dispositivo = this._device;
+        this.terminarRefresh();
+    };
+    InicioPage.prototype.RefrescarPagina = function (refresher) {
+        this.seRefresco = refresher;
+        this.obtnerInfoDelDispositivo();
+    };
+    InicioPage.prototype.terminarRefresh = function () {
+        console.log(this.seRefresco);
+        if (this.seRefresco != null)
+            this.seRefresco.complete();
+    };
+    InicioPage = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
+            selector: 'page-inicio',template:/*ion-inline-start:"D:\Desarrollos\Angular\Angular2\CURSO\DeviceInfoIonic\DeviceInfo2\src\pages\inicio\inicio.html"*/'<ion-header>\n\n\n\n  <ion-navbar>\n\n    <ion-title>Inicio</ion-title>\n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n\n\n<ion-content padding>\n\n\n\n  <ion-refresher (ionRefresh)="RefrescarPagina($event)">\n\n    <ion-refresher-content>Se esta refrescando la pagina....</ion-refresher-content>\n\n  </ion-refresher>\n\n  \n\n  <ion-card>\n\n    <ion-card-header>\n\n      Informacion del dispositivo\n\n    </ion-card-header>\n\n\n\n\n\n    <ion-list>\n\n      <button ion-item>\n\n        <ion-icon name="ios-phone-portrait-outline" item-start></ion-icon>\n\n          Marca de Celular: {{ Dispositivo.manufacturer }}\n\n      </button>\n\n      \n\n      <button ion-item>\n\n        <ion-icon name="md-barcode" item-start></ion-icon>\n\n          Modelo del Celular: {{ Dispositivo.model }}\n\n      </button>\n\n      \n\n      <button ion-item>\n\n        <ion-icon name="ios-body-outline" item-start></ion-icon>\n\n          Version de Cordova: {{ Dispositivo.cordova }}\n\n      </button>\n\n      \n\n      <button ion-item>\n\n        <ion-icon name="ios-create-outline" item-start></ion-icon>\n\n          Serial del Celular: {{ Dispositivo.serial }}\n\n      </button>\n\n       \n\n    </ion-list>\n\n  </ion-card>\n\n\n\n  <ion-card>\n\n    <ion-card-header>\n\n        Informacion de la Red\n\n    </ion-card-header>\n\n      <button ion-item>\n\n        <ion-icon name="md-git-network" item-start></ion-icon>\n\n          Serial del Celular: \n\n      </button>\n\n  </ion-card>\n\n\n\n</ion-content>'/*ion-inline-end:"D:\Desarrollos\Angular\Angular2\CURSO\DeviceInfoIonic\DeviceInfo2\src\pages\inicio\inicio.html"*/,
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */],
+            __WEBPACK_IMPORTED_MODULE_2__ionic_native_device__["a" /* Device */]])
+    ], InicioPage);
+    return InicioPage;
+}());
+
+//# sourceMappingURL=inicio.js.map
+
+/***/ }),
+
 /***/ 203:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -356,8 +356,8 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__pipes_url_seguro_url_seguro__ = __webpack_require__(277);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__ionic_native_status_bar__ = __webpack_require__(197);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__ionic_native_splash_screen__ = __webpack_require__(198);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__ionic_native_contacts__ = __webpack_require__(157);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__ionic_native_device__ = __webpack_require__(155);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__ionic_native_contacts__ = __webpack_require__(155);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__ionic_native_device__ = __webpack_require__(157);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__providers_provider_exports__ = __webpack_require__(278);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -397,8 +397,8 @@ var AppModule = /** @class */ (function () {
                 __WEBPACK_IMPORTED_MODULE_1__angular_platform_browser__["a" /* BrowserModule */],
                 __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["c" /* IonicModule */].forRoot(__WEBPACK_IMPORTED_MODULE_3__app_component__["a" /* MyApp */], {}, {
                     links: [
-                        { loadChildren: '../pages/inicio/inicio.module#InicioPageModule', name: 'InicioPage', segment: 'inicio', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/contactos/contactos.module#ContactosPageModule', name: 'ContactosPage', segment: 'contactos', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/inicio/inicio.module#InicioPageModule', name: 'InicioPage', segment: 'inicio', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/otro/otro.module#OtroPageModule', name: 'OtroPage', segment: 'otro', priority: 'low', defaultHistory: [] }
                     ]
                 })
