@@ -2,5 +2,11 @@ int drawable screen 0x7f010000
 int mipmap icon 0x7f020000
 int string activity_name 0x7f030000
 int string app_name 0x7f030001
-int string launcher_name 0x7f030002
+int string ionic_app_id 0x7f030002
+int string ionic_channel_name 0x7f030003
+int string ionic_debug 0x7f030004
+int string ionic_max_versions 0x7f030005
+int string ionic_update_api 0x7f030006
+int string ionic_update_method 0x7f030007
+int string launcher_name 0x7f030008
 int xml config 0x7f040000

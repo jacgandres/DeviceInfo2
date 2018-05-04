@@ -17,7 +17,13 @@ public final class R {
   public static final class string {
     public static final int activity_name=0x7f030000;
     public static final int app_name=0x7f030001;
-    public static final int launcher_name=0x7f030002;
+    public static final int ionic_app_id=0x7f030002;
+    public static final int ionic_channel_name=0x7f030003;
+    public static final int ionic_debug=0x7f030004;
+    public static final int ionic_max_versions=0x7f030005;
+    public static final int ionic_update_api=0x7f030006;
+    public static final int ionic_update_method=0x7f030007;
+    public static final int launcher_name=0x7f030008;
   }
   public static final class xml {
     public static final int config=0x7f040000;

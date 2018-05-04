@@ -1,0 +1,131 @@
+{
+  "_args": [
+    [
+      {
+        "raw": "cordova-plugin-ionic@4.1.7",
+        "scope": null,
+        "escapedName": "cordova-plugin-ionic",
+        "name": "cordova-plugin-ionic",
+        "rawSpec": "4.1.7",
+        "spec": "4.1.7",
+        "type": "version"
+      },
+      "D:\\Desarrollos\\Angular\\Angular2\\CURSO\\DeviceInfoIonic\\DeviceInfo2"
+    ]
+  ],
+  "_from": "cordova-plugin-ionic@4.1.7",
+  "_id": "cordova-plugin-ionic@4.1.7",
+  "_inCache": true,
+  "_location": "/cordova-plugin-ionic",
+  "_nodeVersion": "8.7.0",
+  "_npmOperationalInternal": {
+    "host": "s3://npm-registry-packages",
+    "tmp": "tmp/cordova-plugin-ionic_4.1.7_1525271949215_0.590646258537022"
+  },
+  "_npmUser": {
+    "name": "fuiste",
+    "email": "rudy@ionic.io"
+  },
+  "_npmVersion": "5.6.0",
+  "_phantomChildren": {},
+  "_requested": {
+    "raw": "cordova-plugin-ionic@4.1.7",
+    "scope": null,
+    "escapedName": "cordova-plugin-ionic",
+    "name": "cordova-plugin-ionic",
+    "rawSpec": "4.1.7",
+    "spec": "4.1.7",
+    "type": "version"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/cordova-plugin-ionic/-/cordova-plugin-ionic-4.1.7.tgz",
+  "_shasum": "62f486689ef7255b996279a5eafddb0ad7f7f109",
+  "_shrinkwrap": null,
+  "_spec": "cordova-plugin-ionic@4.1.7",
+  "_where": "D:\\Desarrollos\\Angular\\Angular2\\CURSO\\DeviceInfoIonic\\DeviceInfo2",
+  "author": {
+    "name": "Ionic"
+  },
+  "bugs": {
+    "url": "https://github.com/ionic-team/cordova-plugin-ionic/issues"
+  },
+  "contributors": [
+    {
+      "name": "Max Lynch",
+      "email": "max@ionic.io"
+    },
+    {
+      "name": "William Pelrine",
+      "email": "rudy@ionic.io"
+    }
+  ],
+  "cordova": {
+    "id": "cordova-plugin-ionic",
+    "platforms": [
+      "android",
+      "ios"
+    ]
+  },
+  "dependencies": {
+    "mkpath": ">=1.0.0",
+    "node-version-compare": ">=1.0.1",
+    "plist": ">=1.2.0",
+    "xml2js": ">=0.4"
+  },
+  "description": "Ionic Cordova SDK",
+  "devDependencies": {},
+  "directories": {},
+  "dist": {
+    "integrity": "sha512-ckFP1ImmSgIRKXCi1Gog4ZzD5rbAyPdUhjLlmzi54aXSMRn7KSJi5e7FUJ7LbblRiv7sibynmX+54cbTjbEFdQ==",
+    "shasum": "62f486689ef7255b996279a5eafddb0ad7f7f109",
+    "tarball": "https://registry.npmjs.org/cordova-plugin-ionic/-/cordova-plugin-ionic-4.1.7.tgz",
+    "fileCount": 90,
+    "unpackedSize": 930771,
+    "npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJa6c2OCRA9TVsSAnZWagAAnTwP/iIT9d0kWbWmsk+cNuSZ\nYLWMqOHF78JzgDaWR6EjIJPTzuSLOcfhRHuIoGGxhnWmmVYhIciC7A+ko7vp\ncPK1fRQcA4b6NscVr+UnZ2QslFf+byGG5+tFWvCrN7N8QMo9QTgqNt1V6lqF\nuuPD0hNEMJPBe/S6t7TqBUlOb7akF/6xZs6EpEo7gxtB0bGqXTBORrJ4RvFq\n8ypBd3kweVA4ciOvJPhve5fm3JRf5VjtpgMC46R5YokqiELE6r0Fwx40mWIV\nqO/86qrzTgNvXBPy0NRF32w0KqHjgJsJH9L08y/JLQ3PFKIT8ETeNBZkBceh\nw5sqRb+z1YMHPkEJ0lfFzyOUQ3hCYZVrzeJpUxnOyIuGdcB86Ajwvquhb2fD\n2fUvSPHBIY6p/UdEK7i8MCGxaDr0nMWwg8qz5nngLFcEO387ThnusrIfL7ek\njCevMtRi9mtS/QMC56emccr67cwkppc9SsY+zCox2mdOWzyDQBv8fhNRTBjS\nbdxLCY6dZGFsPmHDL2sv7AyTNETP3FkeRrVeZ+IOQF590XADX9rGN+yBztQe\no32jbt94d+AIbnUnPdeLzgN2p1RfMjQM0FjiZhUYQPpzdby0dQ9OQJ8WOHY7\n+wvjfycjbPk0h5G2go/zOZTbW5RCzxAzhIsg13duMfAzRT457tev6CGd5J98\nc/Mw\r\n=Cw/M\r\n-----END PGP SIGNATURE-----\r\n"
+  },
+  "engines": {
+    "cordovaDependencies": {
+      "2.0.4": {
+        "cordova-plugin-splashscreen": ">=4.0.0"
+      },
+      "3.1.3": {
+        "cordova-plugin-splashscreen": ">=5.0.1"
+      },
+      "4.1.7": {
+        "cordova-plugin-splashscreen": ">=5.0.1"
+      }
+    }
+  },
+  "gitHead": "2081261afec542dd19780ad8e50818590d8ea42a",
+  "homepage": "https://github.com/ionic-team/cordova-plugin-ionic#readme",
+  "issue": "https://github.com/ionic-team/cordova-plugin-ionic/issues",
+  "keywords": [
+    "ionic",
+    "cordova",
+    "deploy",
+    "liveupdates",
+    "mobile",
+    "hybrid",
+    "ecosystem:cordova",
+    "cordova-android",
+    "cordova-ios"
+  ],
+  "license": "MIT",
+  "maintainers": [
+    {
+      "name": "fuiste",
+      "email": "rudy@ionic.io"
+    }
+  ],
+  "name": "cordova-plugin-ionic",
+  "optionalDependencies": {},
+  "readme": "ERROR: No README data found!",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ionic-team/cordova-plugin-ionic.git"
+  },
+  "version": "4.1.7"
+}
