@@ -1,0 +1,56 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Inicio</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <ion-refresher (ionRefresh)="RefrescarPagina($event)">
+    <ion-refresher-content>Se esta refrescando la pagina....</ion-refresher-content>
+  </ion-refresher>
+  
+  <ion-card>
+    <ion-card-header>
+      Informacion del dispositivo
+    </ion-card-header>
+
+
+    <ion-list>
+      <button ion-item>
+        <ion-icon name="ios-phone-portrait-outline" item-start></ion-icon>
+          Marca de Celular: {{ Dispositivo.manufacturer }}
+      </button>
+      
+      <button ion-item>
+        <ion-icon name="md-barcode" item-start></ion-icon>
+          Modelo del Celular: {{ Dispositivo.model }}
+      </button>
+      
+      <button ion-item>
+        <ion-icon name="ios-body-outline" item-start></ion-icon>
+          Version de Cordova: {{ Dispositivo.cordova }}
+      </button>
+      
+      <button ion-item>
+        <ion-icon name="ios-create-outline" item-start></ion-icon>
+          Serial del Celular: {{ Dispositivo.serial }}
+      </button>
+       
+    </ion-list>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+        Informacion de la Red
+    </ion-card-header>
+      <button ion-item>
+        <ion-icon name="md-git-network" item-start></ion-icon>
+          Serial del Celular: 
+      </button>
+  </ion-card>
+
+</ion-content>

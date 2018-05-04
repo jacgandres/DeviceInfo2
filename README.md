@@ -1,1 +1,1 @@
-# DeviceInfo2
+# DeviceInfo

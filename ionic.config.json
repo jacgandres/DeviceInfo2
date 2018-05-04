@@ -1,0 +1,8 @@
+{
+  "name": "DeviceInfo",
+  "app_id": "8ce09bef",
+  "type": "ionic-angular",
+  "integrations": {
+    "cordova": {}
+  }
+}
