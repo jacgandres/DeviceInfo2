@@ -3,7 +3,7 @@
     <name>DeviceInfo2</name>
     <description>Practicando ionic y angular</description>
     <author email="jacgandres@hotmail.com" href="http://ionicframework.com/">Ionic Framework Team</author>
-    <content src="index.html" />
+    <content original-src="index.html" src="http://192.168.1.104:8100" />
     <access origin="*" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
@@ -98,5 +98,6 @@
         <variable name="UPDATE_API" value="https://api.ionicjs.com" />
         <variable name="MAX_STORE" value="2" />
     </plugin>
+    <allow-navigation href="http://192.168.1.104:8100" />
     <engine name="android" spec="~7.0.0" />
 </widget>

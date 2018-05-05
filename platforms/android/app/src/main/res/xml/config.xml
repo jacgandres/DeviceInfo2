@@ -40,7 +40,7 @@
     <name>DeviceInfo2</name>
     <description>Practicando ionic y angular</description>
     <author email="jacgandres@hotmail.com" href="http://ionicframework.com/">Ionic Framework Team</author>
-    <content src="index.html" />
+    <content original-src="index.html" src="http://192.168.1.104:8100" />
     <access origin="*" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
@@ -50,6 +50,7 @@
     <allow-intent href="geo:*" />
     <allow-navigation href="http://172.28.200.167:8100" />
     <allow-navigation href="http://192.168.1.102:8100" />
+    <allow-navigation href="http://192.168.1.104:8100" />
     <allow-intent href="market:*" />
     <icon density="ldpi" src="resources/android/icon/drawable-ldpi-icon.png" />
     <icon density="mdpi" src="resources/android/icon/drawable-mdpi-icon.png" />

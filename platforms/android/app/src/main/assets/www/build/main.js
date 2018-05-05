@@ -122,17 +122,20 @@ var ContactProvider = /** @class */ (function () {
     };
     ContactProvider.prototype.RefrescarPagina = function (refresher) {
         this.seRefresco = refresher;
-        this.consultarContactos();
     };
     ContactProvider.prototype.terminarRefresh = function () {
         console.log(this.seRefresco);
         if (this.seRefresco != null)
             this.seRefresco.complete();
     };
+    ContactProvider.prototype.eliminarContacto = function (contacto) {
+        console.log('Accion Eliminar');
+        return contacto.remove();
+    };
     ContactProvider = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["A" /* Injectable */])(),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* Platform */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* LoadingController */],
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* Platform */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* LoadingController */],
             __WEBPACK_IMPORTED_MODULE_2__ionic_native_contacts__["b" /* Contacts */]])
     ], ContactProvider);
     return ContactProvider;
@@ -218,11 +221,12 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 var ContactosPage = /** @class */ (function () {
-    function ContactosPage(navCtrl, navParams, _platForm, _contacts, loadingCtrl) {
+    function ContactosPage(navCtrl, navParams, _platForm, _contacts, _alertCtrl, loadingCtrl) {
         this.navCtrl = navCtrl;
         this.navParams = navParams;
         this._platForm = _platForm;
         this._contacts = _contacts;
+        this._alertCtrl = _alertCtrl;
         this.loadingCtrl = loadingCtrl;
         this.Contactos = [];
         this.contactProvider = new __WEBPACK_IMPORTED_MODULE_3__providers_contact_contact__["a" /* ContactProvider */](this._platForm, this.loadingCtrl, this._contacts);
@@ -254,16 +258,62 @@ var ContactosPage = /** @class */ (function () {
     };
     ContactosPage.prototype.RefrescarPagina = function (refresher) {
         this.contactProvider.RefrescarPagina(refresher);
+        this.consultarContactos();
+    };
+    ContactosPage.prototype.EliminarContacto = function (contacto, slidingItem) {
+        slidingItem.close();
+        this.showConfirm("Esta seguro que desea elminar el contacto?", "Contacto" + contacto.displayName, this.AccionEliminar, contacto);
+    };
+    ContactosPage.prototype.LimpiarContacto = function (contacto, slidingItem) {
+        slidingItem.close();
+        this.showConfirm("Contacto: " + contacto.displayName, "Esta seguro que desea Combinar el contacto?", this.AccionCombinar, contacto);
+    };
+    ContactosPage.prototype.MarcarContacto = function (contacto, slidingItem) {
+        slidingItem.close();
+    };
+    ContactosPage.prototype.AccionEliminar = function (contacto, ctrll) {
+        var promesa = ctrll.contactProvider.eliminarContacto(contacto);
+        promesa.then(function (result) {
+            console.log(JSON.stringify(result));
+            ctrll.consultarContactos();
+        });
+    };
+    ContactosPage.prototype.AccionCombinar = function () {
+        console.log('Accion Combinar');
+    };
+    ContactosPage.prototype.showConfirm = function (title, message, action, contacto) {
+        var actualCtrll = this;
+        var confirm = this._alertCtrl.create({
+            title: title,
+            message: message,
+            buttons: [
+                {
+                    text: 'Cancelar',
+                    handler: function () {
+                        console.log('Disagree clicked');
+                    }
+                },
+                {
+                    text: 'Aceptar',
+                    handler: function () {
+                        console.log('Agree clicked');
+                        action(contacto, actualCtrll);
+                    }
+                }
+            ]
+        });
+        confirm.present();
     };
     ContactosPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-contactos',template:/*ion-inline-start:"D:\Desarrollos\Angular\Angular2\CURSO\DeviceInfoIonic\DeviceInfo2\src\pages\contactos\contactos.html"*/'<!--\n\n  Generated template for the ContactosPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n\n\n  <ion-navbar>\n\n    <ion-title>Contactos</ion-title>\n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n\n\n<ion-content  padding>\n\n\n\n  <ion-refresher (ionRefresh)="RefrescarPagina($event)">\n\n    <ion-refresher-content>Se esta refrescando la pagina....</ion-refresher-content>\n\n  </ion-refresher>\n\n\n\n  <h1>Listado de contactos <small ng-if="CantidadContactos > 0">({{CantidadContactos}})</small></h1>\n\n  <ion-list>\n\n    <ion-item *ngFor="let contacto of Contactos">\n\n      <ion-avatar item-start>\n\n        <img [src]="(contacto|FotoPipe)|urlSeguro:\'url\'" class="thumbmail">\n\n      </ion-avatar>\n\n      <h2>{{ contacto.displayName }}</h2>\n\n      <p *ngFor="let telefono of contacto.phoneNumbers">{{ telefono.value }} - {{ telefono.type }}</p>\n\n    </ion-item>\n\n  </ion-list>\n\n</ion-content>'/*ion-inline-end:"D:\Desarrollos\Angular\Angular2\CURSO\DeviceInfoIonic\DeviceInfo2\src\pages\contactos\contactos.html"*/,
+            selector: 'page-contactos',template:/*ion-inline-start:"D:\Desarrollos\Angular\Angular2\CURSO\DeviceInfoIonic\DeviceInfo2\src\pages\contactos\contactos.html"*/'<ion-header>\n\n\n\n  <ion-navbar>\n\n    <ion-title>Contactos</ion-title>\n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n\n\n<ion-content padding>\n\n\n\n  <ion-refresher (ionRefresh)="RefrescarPagina($event)">\n\n    <ion-refresher-content>Se esta refrescando la pagina....</ion-refresher-content>\n\n  </ion-refresher>\n\n\n\n  <h1>Listado de contactos\n\n    <small ng-if="CantidadContactos > 0">({{CantidadContactos}})</small>\n\n  </h1>\n\n  <ion-list>\n\n    <ion-item-sliding #item *ngFor="let contacto of Contactos"> \n\n      <ion-item>\n\n        <ion-avatar item-start>\n\n          <img [src]="(contacto|FotoPipe)|urlSeguro:\'url\'" class="thumbmail">\n\n        </ion-avatar>\n\n        <h2>{{ contacto.displayName }}</h2>\n\n        <p *ngFor="let telefono of contacto.phoneNumbers">{{ telefono.value }} - {{ telefono.type }}</p>\n\n      </ion-item>\n\n      <ion-item-options side="left"> \n\n        <button ion-button expandable  color="danger" (click)="EliminarContacto(contacto,item)">\n\n          Eliminar\n\n          <ion-icon name="trash"></ion-icon>\n\n        </button>\n\n      </ion-item-options>\n\n      <ion-item-options side="right">\n\n          <button ion-button color="default"   (click)="LimpiarContacto(contacto,item)">\n\n              Combinar\n\n              <ion-icon name="md-git-merge"></ion-icon>\n\n          </button>\n\n          <button ion-button color="secondary" (click)="MarcarContacto(contacto,item)">\n\n            Marcar\n\n            <ion-icon name="ios-checkbox-outline"></ion-icon>\n\n          </button>\n\n      </ion-item-options>  \n\n    </ion-item-sliding>\n\n  </ion-list>\n\n</ion-content>'/*ion-inline-end:"D:\Desarrollos\Angular\Angular2\CURSO\DeviceInfoIonic\DeviceInfo2\src\pages\contactos\contactos.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* Platform */],
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* Platform */],
             __WEBPACK_IMPORTED_MODULE_2__ionic_native_contacts__["b" /* Contacts */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* LoadingController */]])
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* LoadingController */]])
     ], ContactosPage);
     return ContactosPage;
 }());
@@ -328,8 +378,8 @@ var InicioPage = /** @class */ (function () {
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
             selector: 'page-inicio',template:/*ion-inline-start:"D:\Desarrollos\Angular\Angular2\CURSO\DeviceInfoIonic\DeviceInfo2\src\pages\inicio\inicio.html"*/'<ion-header>\n\n\n\n  <ion-navbar>\n\n    <ion-title>Inicio</ion-title>\n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n\n\n<ion-content padding>\n\n\n\n  <ion-refresher (ionRefresh)="RefrescarPagina($event)">\n\n    <ion-refresher-content>Se esta refrescando la pagina....</ion-refresher-content>\n\n  </ion-refresher>\n\n  \n\n  <ion-card>\n\n    <ion-card-header>\n\n      Informacion del dispositivo\n\n    </ion-card-header>\n\n\n\n\n\n    <ion-list>\n\n      <button ion-item>\n\n        <ion-icon name="ios-phone-portrait-outline" item-start></ion-icon>\n\n          Marca de Celular: {{ Dispositivo.manufacturer }}\n\n      </button>\n\n      \n\n      <button ion-item>\n\n        <ion-icon name="md-barcode" item-start></ion-icon>\n\n          Modelo del Celular: {{ Dispositivo.model }}\n\n      </button>\n\n      \n\n      <button ion-item>\n\n        <ion-icon name="ios-body-outline" item-start></ion-icon>\n\n          Version de Cordova: {{ Dispositivo.cordova }}\n\n      </button>\n\n      \n\n      <button ion-item>\n\n        <ion-icon name="ios-create-outline" item-start></ion-icon>\n\n          Serial del Celular: {{ Dispositivo.serial }}\n\n      </button>\n\n       \n\n    </ion-list>\n\n  </ion-card>\n\n\n\n  <ion-card>\n\n    <ion-card-header>\n\n        Informacion de la Red\n\n    </ion-card-header>\n\n      <button ion-item>\n\n        <ion-icon name="md-git-network" item-start></ion-icon>\n\n          Serial del Celular: \n\n      </button>\n\n  </ion-card>\n\n\n\n</ion-content>'/*ion-inline-end:"D:\Desarrollos\Angular\Angular2\CURSO\DeviceInfoIonic\DeviceInfo2\src\pages\inicio\inicio.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */],
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */],
             __WEBPACK_IMPORTED_MODULE_2__ionic_native_device__["a" /* Device */]])
     ], InicioPage);
     return InicioPage;
@@ -375,7 +425,7 @@ var OtroPage = /** @class */ (function () {
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
             selector: 'page-otro',template:/*ion-inline-start:"D:\Desarrollos\Angular\Angular2\CURSO\DeviceInfoIonic\DeviceInfo2\src\pages\otro\otro.html"*/'<!--\n\n  Generated template for the OtroPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n\n\n  <ion-navbar>\n\n    <ion-title>Otro</ion-title>\n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n\n\n<ion-content padding>\n\n\n\n</ion-content>\n\n'/*ion-inline-end:"D:\Desarrollos\Angular\Angular2\CURSO\DeviceInfoIonic\DeviceInfo2\src\pages\otro\otro.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */]])
     ], OtroPage);
     return OtroPage;
 }());
@@ -452,7 +502,7 @@ var AppModule = /** @class */ (function () {
             ],
             imports: [
                 __WEBPACK_IMPORTED_MODULE_1__angular_platform_browser__["a" /* BrowserModule */],
-                __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["c" /* IonicModule */].forRoot(__WEBPACK_IMPORTED_MODULE_3__app_component__["a" /* MyApp */], {}, {
+                __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["d" /* IonicModule */].forRoot(__WEBPACK_IMPORTED_MODULE_3__app_component__["a" /* MyApp */], {}, {
                     links: [
                         { loadChildren: '../pages/contactos/contactos.module#ContactosPageModule', name: 'ContactosPage', segment: 'contactos', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/inicio/inicio.module#InicioPageModule', name: 'InicioPage', segment: 'inicio', priority: 'low', defaultHistory: [] },
@@ -460,7 +510,7 @@ var AppModule = /** @class */ (function () {
                     ]
                 })
             ],
-            bootstrap: [__WEBPACK_IMPORTED_MODULE_2_ionic_angular__["a" /* IonicApp */]],
+            bootstrap: [__WEBPACK_IMPORTED_MODULE_2_ionic_angular__["b" /* IonicApp */]],
             entryComponents: [
                 __WEBPACK_IMPORTED_MODULE_3__app_component__["a" /* MyApp */],
                 __WEBPACK_IMPORTED_MODULE_5__pages_tabs_tabs__["a" /* TabsPage */],
@@ -469,7 +519,7 @@ var AppModule = /** @class */ (function () {
             providers: [
                 __WEBPACK_IMPORTED_MODULE_8__ionic_native_status_bar__["a" /* StatusBar */],
                 __WEBPACK_IMPORTED_MODULE_9__ionic_native_splash_screen__["a" /* SplashScreen */],
-                { provide: __WEBPACK_IMPORTED_MODULE_0__angular_core__["u" /* ErrorHandler */], useClass: __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["b" /* IonicErrorHandler */] },
+                { provide: __WEBPACK_IMPORTED_MODULE_0__angular_core__["u" /* ErrorHandler */], useClass: __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["c" /* IonicErrorHandler */] },
                 __WEBPACK_IMPORTED_MODULE_12__providers_provider_exports__["c" /* DeviceProvider */],
                 __WEBPACK_IMPORTED_MODULE_12__providers_provider_exports__["b" /* ContactProvider */],
                 __WEBPACK_IMPORTED_MODULE_12__providers_provider_exports__["e" /* NetworkProvider */],
@@ -525,7 +575,7 @@ var MyApp = /** @class */ (function () {
     MyApp = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({template:/*ion-inline-start:"D:\Desarrollos\Angular\Angular2\CURSO\DeviceInfoIonic\DeviceInfo2\src\app\app.html"*/'<ion-nav [root]="rootPage"></ion-nav>\n\n'/*ion-inline-end:"D:\Desarrollos\Angular\Angular2\CURSO\DeviceInfoIonic\DeviceInfo2\src\app\app.html"*/
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* Platform */], __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */], __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__["a" /* SplashScreen */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* Platform */], __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */], __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__["a" /* SplashScreen */]])
     ], MyApp);
     return MyApp;
 }());
