@@ -1,2 +1,2 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merger version="3"><dataSet config="main"><source path="D:\Desarrollos\Angular\Angular2\CURSO\DeviceInfoIonic\DeviceInfo2\platforms\android\CordovaLib\src\main\jniLibs"/></dataSet><dataSet config="debug"><source path="D:\Desarrollos\Angular\Angular2\CURSO\DeviceInfoIonic\DeviceInfo2\platforms\android\CordovaLib\src\debug\jniLibs"/></dataSet></merger>
+<merger version="3"><dataSet config="main"><source path="C:\Users\jcarvajalg\Documents\PERSONALES\IOnic\DeviceInfo2\platforms\android\CordovaLib\src\main\jniLibs"/></dataSet><dataSet config="debug"><source path="C:\Users\jcarvajalg\Documents\PERSONALES\IOnic\DeviceInfo2\platforms\android\CordovaLib\src\debug\jniLibs"/></dataSet></merger>

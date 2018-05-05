@@ -1,16 +1,16 @@
 {
     "logs": [
         {
-            "outputFile": "D:\\Desarrollos\\Angular\\Angular2\\CURSO\\DeviceInfoIonic\\DeviceInfo2\\platforms\\android\\app\\build\\intermediates\\res\\merged\\debug\\values_values.arsc.flat",
+            "outputFile": "C:\\Users\\jcarvajalg\\Documents\\PERSONALES\\IOnic\\DeviceInfo2\\platforms\\android\\app\\build\\intermediates\\res\\merged\\debug\\values_values.arsc.flat",
             "map": [
                 {
-                    "source": "D:\\Desarrollos\\Angular\\Angular2\\CURSO\\DeviceInfoIonic\\DeviceInfo2\\platforms\\android\\app\\src\\main\\res\\values\\strings.xml",
+                    "source": "C:\\Users\\jcarvajalg\\Documents\\PERSONALES\\IOnic\\DeviceInfo2\\platforms\\android\\app\\src\\main\\res\\values\\strings.xml",
                     "from": {
-                        "startLines": "-1,2,-1,-1,-1,-1,-1,-1,-1",
-                        "startColumns": "-1,4,-1,-1,-1,-1,-1,-1,-1",
-                        "startOffsets": "-1,55,-1,-1,-1,-1,-1,-1,-1",
-                        "endColumns": "-1,48,-1,-1,-1,-1,-1,-1,-1",
-                        "endOffsets": "-1,99,-1,-1,-1,-1,-1,-1,-1"
+                        "startLines": "4,2,5,7,6,10,8,9,3",
+                        "startColumns": "4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "163,55,227,322,277,504,376,445,104",
+                        "endColumns": "63,48,49,53,44,48,68,58,58",
+                        "endOffsets": "222,99,272,371,317,548,440,499,158"
                     },
                     "to": {
                         "startLines": "2,3,4,5,6,7,8,9,10",
@@ -18,28 +18,6 @@
                         "startOffsets": "55,119,168,218,272,317,366,435,494",
                         "endColumns": "63,48,49,53,44,48,68,58,58",
                         "endOffsets": "114,163,213,267,312,361,430,489,548"
-                    }
-                }
-            ]
-        },
-        {
-            "outputFile": "D:\\Desarrollos\\Angular\\Angular2\\CURSO\\DeviceInfo\\platforms\\android\\app\\build\\intermediates\\res\\merged\\debug\\values_values.arsc.flat",
-            "map": [
-                {
-                    "source": "D:\\Desarrollos\\Angular\\Angular2\\CURSO\\DeviceInfo\\platforms\\android\\app\\src\\main\\res\\values\\strings.xml",
-                    "from": {
-                        "startLines": "4,2,3",
-                        "startColumns": "4,4,4",
-                        "startOffsets": "162,55,103",
-                        "endColumns": "63,47,58",
-                        "endOffsets": "221,98,157"
-                    },
-                    "to": {
-                        "startLines": "2,3,4",
-                        "startColumns": "4,4,4",
-                        "startOffsets": "55,119,167",
-                        "endColumns": "63,47,58",
-                        "endOffsets": "114,162,221"
                     }
                 }
             ]

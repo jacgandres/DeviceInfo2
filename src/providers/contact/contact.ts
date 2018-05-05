@@ -1,17 +1,18 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Contact, Contacts } from '@ionic-native/contacts';
+import { Refresher, Platform, LoadingController } from 'ionic-angular';
 
-/*
-  Generated class for the ContactProvider provider.
-
-  See https://angular.io/guide/dependency-injection for more info on providers
-  and Angular DI.
-*/
+ 
 @Injectable()
 export class ContactProvider {
+  Contactos:Contact[] = []; 
+  CantidadContactos:number; 
+  loading:any; 
+  seRefresco:Refresher; 
 
-  constructor(public http: HttpClient) {
-    console.log('Hello ContactProvider Provider');
+  constructor(private _platForm:Platform, 
+              private loadingCtrl:LoadingController, 
+              private _contacts:Contacts ) { 
   }
 
-}
+} 

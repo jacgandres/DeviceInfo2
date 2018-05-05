@@ -14,9 +14,7 @@ export class UrlSeguroPipe implements PipeTransform {
   constructor(protected sanitizer: DomSanitizer) { }
 
   public transform(value: any, type: string): SafeHtml | SafeStyle | SafeScript | SafeUrl | SafeResourceUrl {
-    var result: any = {};
-    console.log("urlSeguro")
-    console.log(JSON.stringify(value) + " ------------- " + type)
+    var result: any = {}; 
 
     switch (type) {
       case 'html': result = this.sanitizer.bypassSecurityTrustHtml(value); break;
@@ -26,8 +24,7 @@ export class UrlSeguroPipe implements PipeTransform {
       case 'resourceUrl': result = this.sanitizer.bypassSecurityTrustResourceUrl(value); break;
       default: throw new Error(`Invalid safe type specified: ${type}`);
     }
-
-    console.log(JSON.stringify(result));
+ 
     return result;
   }
 
