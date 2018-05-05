@@ -73,7 +73,7 @@ export class ContactosPage {
       this.AccionEliminar, contacto);
   }
 
-  LimpiarContacto(contacto, slidingItem: ItemSliding) {
+  CombinarContacto(contacto, slidingItem: ItemSliding) {
     slidingItem.close();
     this.showConfirm("Contacto: " + contacto.displayName,
       "Esta seguro que desea Combinar el contacto?", this.AccionCombinar, contacto);
@@ -91,8 +91,8 @@ export class ContactosPage {
     });
   }
 
-  AccionCombinar() {
-    console.log('Accion Combinar');
+  AccionCombinar(contacto, ctrll) { 
+    ctrll.contactProvider.combinarContacto(contacto);
   }
 
   showConfirm(title, message, action, contacto) {
@@ -112,7 +112,6 @@ export class ContactosPage {
           handler: () => {
             console.log('Agree clicked');
             action(contacto, actualCtrll);
-
           }
         }
       ]

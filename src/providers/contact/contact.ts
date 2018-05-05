@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Platform, LoadingController, Refresher } from 'ionic-angular';
-import { Contact, Contacts } from '@ionic-native/contacts';
+import { Contact, Contacts, ContactAddress, ContactField } from '@ionic-native/contacts';
 
 
 @Injectable()
@@ -70,7 +70,7 @@ export class ContactProvider {
   }
 
   RefrescarPagina(refresher: Refresher) {
-    this.seRefresco = refresher; 
+    this.seRefresco = refresher;
   }
 
   terminarRefresh() {
@@ -79,9 +79,103 @@ export class ContactProvider {
       this.seRefresco.complete();
   }
 
-  eliminarContacto(contacto:Contact):Promise<Contact>
-  {
+  eliminarContacto(contacto: Contact): Promise<Contact> {
     console.log('Accion Eliminar');
     return contacto.remove();
   }
+
+  combinarContacto(contacto: Contact) {
+    let contactoNuevo = this.getContactoNuevo(contacto);
+    console.log('combinarContacto');
+    console.log(JSON.stringify(contactoNuevo));
+  }
+
+  private getContactoNuevo(contacto: Contact): Contact {
+    let telefonos: any = [];
+    let emails: any = [];
+    let address: any = [];
+    let uniqueTelefonos: any[] = [];
+    let uniqueMails: any[] = [];
+    let uniqueAddress: any[] = [];
+
+
+    if (contacto.phoneNumbers == null)
+      contacto.phoneNumbers = [];
+
+    if (contacto.emails == null)
+      contacto.emails = [];
+
+    if (contacto.addresses == null)
+      contacto.addresses = [];
+
+    contacto.phoneNumbers.forEach(element => {
+      telefonos.push(element.value.replace(/\r\n/, "").replace(" ", "").trim().toLocaleLowerCase());
+    });
+    contacto.emails.forEach(element => {
+      emails.push(element.value.replace(/\r\n/, '').replace(" ", "").trim().toLocaleLowerCase());
+    });
+    contacto.addresses.forEach(element => {
+      address.push(element.streetAddress.replace(/\r\n/, '').replace(" ", "").trim().toLocaleLowerCase());
+    });
+
+
+    if (uniqueTelefonos == null)
+      contacto.phoneNumbers = [];
+
+    if (uniqueMails == null)
+      contacto.emails = [];
+
+    if (uniqueAddress == null)
+      contacto.addresses = [];
+
+
+    uniqueTelefonos = telefonos.filter(function (elem, index, self) {
+      return index === self.indexOf(elem);
+    });
+    uniqueMails = emails.filter(function (elem, index, self) {
+      return index === self.indexOf(elem);
+    });
+    uniqueAddress = address.filter(function (elem, index, self) {
+      return index === self.indexOf(elem);
+    });
+
+    let contactoNuevo: Contact = new Contact();
+    contactoNuevo.displayName = contacto.displayName;
+    contactoNuevo.name = contacto.name;
+    contactoNuevo.nickname = contacto.nickname;
+    contactoNuevo.photos = contacto.photos;
+    contactoNuevo.phoneNumbers = [];
+    contactoNuevo.addresses = [];
+    contactoNuevo.emails = [];
+
+    if (uniqueTelefonos.length > 0) {
+      uniqueTelefonos.forEach(element => {
+        let field: ContactField = new ContactField();
+        field.value = element;
+        contactoNuevo.phoneNumbers.push(field);
+      });
+    }
+
+    if (uniqueAddress.length > 0) {
+      uniqueAddress.forEach(element => {
+        let field: ContactAddress = new ContactAddress();
+        field.streetAddress = element;
+        contactoNuevo.addresses.push(field);
+      });
+    }
+
+    if (uniqueMails.length > 0) {
+      uniqueMails.forEach(element => {
+        let field: ContactField = new ContactField();
+        field.value = element;
+        contactoNuevo.emails.push(field);
+      });
+    }
+
+    return contactoNuevo;
+  }
+
+
+
+
 } 
