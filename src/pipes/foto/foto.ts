@@ -19,7 +19,7 @@ export class FotoPipe implements PipeTransform {
       return value.photos[0].value;
     }
     else {
-      return "../assets/imgs/nofoto.png"
+      return "../assets/imgs/nofoto.PNG"
     }
   }
 }

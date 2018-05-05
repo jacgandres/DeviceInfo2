@@ -1,4 +1,19 @@
-#Fri May 04 17:51:51 COT 2018
-base.0=C\:\\Users\\jcarvajalg\\Documents\\PERSONALES\\IOnic\\DeviceInfo2\\platforms\\android\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\0
+#Fri May 04 23:33:43 COT 2018
+renamed.5=classes6.dex
+renamed.4=classes5.dex
+renamed.3=classes4.dex
+renamed.2=classes3.dex
+renamed.1=classes2.dex
 renamed.0=classes.dex
-file.0=C\:\\Users\\jcarvajalg\\Documents\\PERSONALES\\IOnic\\DeviceInfo2\\platforms\\android\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\0\\classes.dex
+base.5=D\:\\Desarrollos\\Angular\\Angular2\\CURSO\\DeviceInfoIonic\\DeviceInfo2\\platforms\\android\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\74
+base.4=D\:\\Desarrollos\\Angular\\Angular2\\CURSO\\DeviceInfoIonic\\DeviceInfo2\\platforms\\android\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\69
+base.3=D\:\\Desarrollos\\Angular\\Angular2\\CURSO\\DeviceInfoIonic\\DeviceInfo2\\platforms\\android\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\72
+base.2=D\:\\Desarrollos\\Angular\\Angular2\\CURSO\\DeviceInfoIonic\\DeviceInfo2\\platforms\\android\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\70
+base.1=D\:\\Desarrollos\\Angular\\Angular2\\CURSO\\DeviceInfoIonic\\DeviceInfo2\\platforms\\android\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\73
+base.0=D\:\\Desarrollos\\Angular\\Angular2\\CURSO\\DeviceInfoIonic\\DeviceInfo2\\platforms\\android\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\71
+file.5=D\:\\Desarrollos\\Angular\\Angular2\\CURSO\\DeviceInfoIonic\\DeviceInfo2\\platforms\\android\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\74\\classes.dex
+file.4=D\:\\Desarrollos\\Angular\\Angular2\\CURSO\\DeviceInfoIonic\\DeviceInfo2\\platforms\\android\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\69\\classes.dex
+file.3=D\:\\Desarrollos\\Angular\\Angular2\\CURSO\\DeviceInfoIonic\\DeviceInfo2\\platforms\\android\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\72\\classes.dex
+file.2=D\:\\Desarrollos\\Angular\\Angular2\\CURSO\\DeviceInfoIonic\\DeviceInfo2\\platforms\\android\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\70\\classes.dex
+file.1=D\:\\Desarrollos\\Angular\\Angular2\\CURSO\\DeviceInfoIonic\\DeviceInfo2\\platforms\\android\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\73\\classes.dex
+file.0=D\:\\Desarrollos\\Angular\\Angular2\\CURSO\\DeviceInfoIonic\\DeviceInfo2\\platforms\\android\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\71\\classes.dex
