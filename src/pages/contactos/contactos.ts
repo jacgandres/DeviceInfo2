@@ -1,17 +1,8 @@
 import { Component } from '@angular/core';
-import {
-  IonicPage,
-  NavController,
-  NavParams,
-  Platform,
-  LoadingController,
-  Refresher,
-  ItemSliding,
-  AlertController
-} from 'ionic-angular';
-
-import { Contacts, Contact } from '@ionic-native/contacts';
+import { Contact, Contacts } from '@ionic-native/contacts';
+import { AlertController, MenuController, IonicPage, ItemSliding, LoadingController, NavController, NavParams, Platform, Refresher } from 'ionic-angular';
 import { ContactProvider } from '../../providers/contact/contact';
+
 
 @IonicPage()
 @Component({
@@ -28,7 +19,8 @@ export class ContactosPage {
     private _platForm: Platform,
     private _contacts: Contacts,
     private _alertCtrl: AlertController,
-    private loadingCtrl: LoadingController) {
+    private loadingCtrl: LoadingController,
+    private _menuCtrl:MenuController) {
     this.contactProvider = new ContactProvider(this._platForm, this.loadingCtrl, this._contacts);
   }
 
@@ -68,7 +60,7 @@ export class ContactosPage {
 
   EliminarContacto(contacto, slidingItem: ItemSliding) {
     slidingItem.close();
-    this.showConfirm("Contacto: " + contacto.displayName, 
+    this.showConfirm("Contacto: " + contacto.displayName,
       "Esta seguro que desea eliminar el contacto?",
       this.AccionEliminar, contacto);
   }
@@ -91,8 +83,27 @@ export class ContactosPage {
     });
   }
 
-  AccionCombinar(contacto, ctrll) { 
-    ctrll.contactProvider.combinarContacto(contacto);
+  AccionCombinar(contacto, ctrll) {
+    try { 
+      ctrll.contactProvider.combinarContacto(contacto).then((result) => {
+        console.log("Promesa de creacion de contacto");
+        console.log(JSON.stringify(result));
+        ctrll.consultarContactos();
+      },
+        (error: any) => {
+          console.log("Error en Promesa de creacion de contacto");
+          console.log(JSON.stringify(error));
+        });
+    } catch (error) {
+      console.log("Error en Promesa de creacion de contacto");
+      console.log(JSON.stringify(error));
+    }
+  }
+
+  SeleccionarTodas()
+  {
+    console.log("Abrio Menu")
+    this._menuCtrl.close()
   }
 
   showConfirm(title, message, action, contacto) {

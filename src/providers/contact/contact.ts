@@ -84,13 +84,25 @@ export class ContactProvider {
     return contacto.remove();
   }
 
-  combinarContacto(contacto: Contact) {
+  combinarContacto(contacto: Contact):Promise<any> {
     let contactoNuevo = this.getContactoNuevo(contacto);
-    console.log('combinarContacto');
-    console.log(JSON.stringify(contactoNuevo));
+    this.eliminarContacto(contacto);
+    return this.insertarNuevoContacto(contactoNuevo);
   }
 
+  insertarNuevoContacto(contactoNuevo: Contact): Promise<any> {
+
+    console.log("Iniciar insercionContacto Nuevo");
+
+    let contactoInsert = (contactoNuevo as Contact);
+ 
+    return contactoInsert.save();
+ 
+  }
+
+
   private getContactoNuevo(contacto: Contact): Contact {
+    let tipos: string[] = ["mobile", "home", "work", "other"];
     let telefonos: any = [];
     let emails: any = [];
     let address: any = [];
@@ -138,40 +150,61 @@ export class ContactProvider {
     uniqueAddress = address.filter(function (elem, index, self) {
       return index === self.indexOf(elem);
     });
-
+    console.log("Iniciar Contacto Nuevo");
+    //let contactoNuevo:any = {};
+    //let contactoNuevo: Contact = contacto.clone();
+    //let contactoNuevo = this._contacts.create();
     let contactoNuevo: Contact = new Contact();
+
     contactoNuevo.displayName = contacto.displayName;
     contactoNuevo.name = contacto.name;
     contactoNuevo.nickname = contacto.nickname;
     contactoNuevo.photos = contacto.photos;
+    contactoNuevo.birthday = contacto.birthday;
+    contactoNuevo.categories = contacto.categories;
+    contactoNuevo.ims = contacto.ims;
+    contactoNuevo.note = contacto.note;
+    contactoNuevo.organizations = contacto.organizations;
+    contactoNuevo.urls = contacto.urls;
+
     contactoNuevo.phoneNumbers = [];
     contactoNuevo.addresses = [];
     contactoNuevo.emails = [];
 
     if (uniqueTelefonos.length > 0) {
-      uniqueTelefonos.forEach(element => {
+      uniqueTelefonos.forEach((element, index) => {
         let field: ContactField = new ContactField();
         field.value = element;
+        if (index < tipos.length) {
+          field.type = tipos[index];
+        }
         contactoNuevo.phoneNumbers.push(field);
       });
     }
 
     if (uniqueAddress.length > 0) {
-      uniqueAddress.forEach(element => {
+      uniqueAddress.forEach((element, index) => {
         let field: ContactAddress = new ContactAddress();
         field.streetAddress = element;
+        if (index < tipos.length) {
+          field.type = tipos[index];
+        }
         contactoNuevo.addresses.push(field);
       });
     }
 
     if (uniqueMails.length > 0) {
-      uniqueMails.forEach(element => {
+      uniqueMails.forEach((element, index) => {
         let field: ContactField = new ContactField();
         field.value = element;
+        if (index < tipos.length) {
+          field.type = tipos[index];
+        }
         contactoNuevo.emails.push(field);
       });
     }
 
+    console.log("Contacto Nuevo Iniciado");
     return contactoNuevo;
   }
 

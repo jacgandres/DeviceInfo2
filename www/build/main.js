@@ -26,11 +26,11 @@ var map = {
 		2
 	],
 	"../pages/inicio/inicio.module": [
-		291,
+		290,
 		1
 	],
 	"../pages/otro/otro.module": [
-		290,
+		291,
 		0
 	]
 };
@@ -134,10 +134,16 @@ var ContactProvider = /** @class */ (function () {
     };
     ContactProvider.prototype.combinarContacto = function (contacto) {
         var contactoNuevo = this.getContactoNuevo(contacto);
-        console.log('combinarContacto');
-        console.log(JSON.stringify(contactoNuevo));
+        this.eliminarContacto(contacto);
+        return this.insertarNuevoContacto(contactoNuevo);
+    };
+    ContactProvider.prototype.insertarNuevoContacto = function (contactoNuevo) {
+        console.log("Iniciar insercionContacto Nuevo");
+        var contactoInsert = contactoNuevo;
+        return contactoInsert.save();
     };
     ContactProvider.prototype.getContactoNuevo = function (contacto) {
+        var tipos = ["mobile", "home", "work", "other"];
         var telefonos = [];
         var emails = [];
         var address = [];
@@ -174,43 +180,64 @@ var ContactProvider = /** @class */ (function () {
         uniqueAddress = address.filter(function (elem, index, self) {
             return index === self.indexOf(elem);
         });
+        console.log("Iniciar Contacto Nuevo");
+        //let contactoNuevo:any = {};
+        //let contactoNuevo: Contact = contacto.clone();
+        //let contactoNuevo = this._contacts.create();
         var contactoNuevo = new __WEBPACK_IMPORTED_MODULE_2__ionic_native_contacts__["a" /* Contact */]();
         contactoNuevo.displayName = contacto.displayName;
         contactoNuevo.name = contacto.name;
         contactoNuevo.nickname = contacto.nickname;
         contactoNuevo.photos = contacto.photos;
+        contactoNuevo.birthday = contacto.birthday;
+        contactoNuevo.categories = contacto.categories;
+        contactoNuevo.ims = contacto.ims;
+        contactoNuevo.note = contacto.note;
+        contactoNuevo.organizations = contacto.organizations;
+        contactoNuevo.urls = contacto.urls;
         contactoNuevo.phoneNumbers = [];
         contactoNuevo.addresses = [];
         contactoNuevo.emails = [];
         if (uniqueTelefonos.length > 0) {
-            uniqueTelefonos.forEach(function (element) {
+            uniqueTelefonos.forEach(function (element, index) {
                 var field = new __WEBPACK_IMPORTED_MODULE_2__ionic_native_contacts__["c" /* ContactField */]();
                 field.value = element;
+                if (index < tipos.length) {
+                    field.type = tipos[index];
+                }
                 contactoNuevo.phoneNumbers.push(field);
             });
         }
         if (uniqueAddress.length > 0) {
-            uniqueAddress.forEach(function (element) {
+            uniqueAddress.forEach(function (element, index) {
                 var field = new __WEBPACK_IMPORTED_MODULE_2__ionic_native_contacts__["b" /* ContactAddress */]();
                 field.streetAddress = element;
+                if (index < tipos.length) {
+                    field.type = tipos[index];
+                }
                 contactoNuevo.addresses.push(field);
             });
         }
         if (uniqueMails.length > 0) {
-            uniqueMails.forEach(function (element) {
+            uniqueMails.forEach(function (element, index) {
                 var field = new __WEBPACK_IMPORTED_MODULE_2__ionic_native_contacts__["c" /* ContactField */]();
                 field.value = element;
+                if (index < tipos.length) {
+                    field.type = tipos[index];
+                }
                 contactoNuevo.emails.push(field);
             });
         }
+        console.log("Contacto Nuevo Iniciado");
         return contactoNuevo;
     };
     ContactProvider = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["A" /* Injectable */])(),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* Platform */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* Platform */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* LoadingController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* LoadingController */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__ionic_native_contacts__["d" /* Contacts */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__ionic_native_contacts__["d" /* Contacts */]) === "function" && _c || Object])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* Platform */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* LoadingController */],
+            __WEBPACK_IMPORTED_MODULE_2__ionic_native_contacts__["d" /* Contacts */]])
     ], ContactProvider);
     return ContactProvider;
-    var _a, _b, _c;
 }());
 
 //# sourceMappingURL=contact.js.map
@@ -259,9 +286,9 @@ var TabsPage = /** @class */ (function () {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__contactos_contactos__ = __webpack_require__(202);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return __WEBPACK_IMPORTED_MODULE_0__contactos_contactos__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__inicio_inicio__ = __webpack_require__(204);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__inicio_inicio__ = __webpack_require__(203);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return __WEBPACK_IMPORTED_MODULE_1__inicio_inicio__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__otro_otro__ = __webpack_require__(203);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__otro_otro__ = __webpack_require__(204);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return __WEBPACK_IMPORTED_MODULE_2__otro_otro__["a"]; });
 
 
@@ -276,8 +303,8 @@ var TabsPage = /** @class */ (function () {
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ContactosPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(29);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_contacts__ = __webpack_require__(78);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ionic_native_contacts__ = __webpack_require__(78);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(29);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_contact_contact__ = __webpack_require__(157);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -293,13 +320,14 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 var ContactosPage = /** @class */ (function () {
-    function ContactosPage(navCtrl, navParams, _platForm, _contacts, _alertCtrl, loadingCtrl) {
+    function ContactosPage(navCtrl, navParams, _platForm, _contacts, _alertCtrl, loadingCtrl, _menuCtrl) {
         this.navCtrl = navCtrl;
         this.navParams = navParams;
         this._platForm = _platForm;
         this._contacts = _contacts;
         this._alertCtrl = _alertCtrl;
         this.loadingCtrl = loadingCtrl;
+        this._menuCtrl = _menuCtrl;
         this.Contactos = [];
         this.contactProvider = new __WEBPACK_IMPORTED_MODULE_3__providers_contact_contact__["a" /* ContactProvider */](this._platForm, this.loadingCtrl, this._contacts);
     }
@@ -351,7 +379,24 @@ var ContactosPage = /** @class */ (function () {
         });
     };
     ContactosPage.prototype.AccionCombinar = function (contacto, ctrll) {
-        ctrll.contactProvider.combinarContacto(contacto);
+        try {
+            ctrll.contactProvider.combinarContacto(contacto).then(function (result) {
+                console.log("Promesa de creacion de contacto");
+                console.log(JSON.stringify(result));
+                ctrll.consultarContactos();
+            }, function (error) {
+                console.log("Error en Promesa de creacion de contacto");
+                console.log(JSON.stringify(error));
+            });
+        }
+        catch (error) {
+            console.log("Error en Promesa de creacion de contacto");
+            console.log(JSON.stringify(error));
+        }
+    };
+    ContactosPage.prototype.SeleccionarTodas = function () {
+        console.log("Abrio Menu");
+        this._menuCtrl.close();
     };
     ContactosPage.prototype.showConfirm = function (title, message, action, contacto) {
         var actualCtrll = this;
@@ -378,14 +423,15 @@ var ContactosPage = /** @class */ (function () {
     };
     ContactosPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-contactos',template:/*ion-inline-start:"D:\Desarrollos\Angular\Angular2\CURSO\DeviceInfoIonic\DeviceInfo2\src\pages\contactos\contactos.html"*/'<ion-header>\n\n\n\n  <ion-navbar>\n\n    <ion-title>Contactos</ion-title>\n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n\n\n<ion-content padding>\n\n\n\n  <ion-refresher (ionRefresh)="RefrescarPagina($event)">\n\n    <ion-refresher-content>Se esta refrescando la pagina....</ion-refresher-content>\n\n  </ion-refresher>\n\n\n\n  <h1>Listado de contactos\n\n    <small ng-if="CantidadContactos > 0">({{CantidadContactos}})</small>\n\n  </h1>\n\n  <ion-list>\n\n    <ion-item-sliding #item *ngFor="let contacto of Contactos">\n\n      <ion-item>\n\n        <ion-avatar item-start>\n\n          <img [src]="(contacto|FotoPipe)|urlSeguro:\'url\'" class="thumbmail">\n\n        </ion-avatar>\n\n        <h2 class="MarginTop5px" text-wrap>{{ contacto.displayName }}</h2>\n\n        <p *ngFor="let telefono of contacto.phoneNumbers">{{ telefono.value }} - {{ telefono.type }}</p>\n\n      </ion-item>\n\n      <ion-item-options side="left">\n\n        <button ion-button color="danger" (click)="EliminarContacto(contacto,item)">\n\n          Eliminar\n\n          <ion-icon name="trash"></ion-icon>\n\n        </button>\n\n      </ion-item-options>\n\n      <ion-item-options side="right">\n\n        <button ion-button color="default" (click)="CombinarContacto(contacto,item)">\n\n          Combinar\n\n          <ion-icon name="md-git-merge"></ion-icon>\n\n        </button>\n\n        <button ion-button color="secondary" (click)="MarcarContacto(contacto,item)">\n\n          Marcar\n\n          <ion-icon name="ios-checkbox-outline"></ion-icon>\n\n        </button>\n\n      </ion-item-options>\n\n    </ion-item-sliding>\n\n  </ion-list>\n\n</ion-content>'/*ion-inline-end:"D:\Desarrollos\Angular\Angular2\CURSO\DeviceInfoIonic\DeviceInfo2\src\pages\contactos\contactos.html"*/,
+            selector: 'page-contactos',template:/*ion-inline-start:"D:\Desarrollos\Angular\Angular2\CURSO\DeviceInfoIonic\DeviceInfo2\src\pages\contactos\contactos.html"*/'<ion-menu [content]="contentMenu">\n\n  <ion-header>\n\n    <ion-toolbar>\n\n      <ion-title>Menu</ion-title>\n\n    </ion-toolbar>\n\n  </ion-header>\n\n  <ion-content>\n\n    <ion-list>\n\n      <button ion-item (click)="SeleccionarTodas(homePage)" color="primary">\n\n        Seleccionar Todos los Contactos\n\n          <ion-icon name="ios-list-box-outline" side="left" ></ion-icon>\n\n      </button>  \n\n    </ion-list>\n\n  </ion-content>\n\n</ion-menu>\n\n\n\n\n\n<ion-header >\n\n\n\n  <ion-navbar>\n\n    <ion-title>Contactos</ion-title>\n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n\n\n<ion-content padding #contentMenu> \n\n\n\n  <ion-refresher (ionRefresh)="RefrescarPagina($event)">\n\n    <ion-refresher-content>Se esta refrescando la pagina....</ion-refresher-content>\n\n  </ion-refresher>\n\n\n\n  <h1>Listado de contactos\n\n    <small ng-if="CantidadContactos > 0">({{CantidadContactos}})</small>\n\n  </h1>\n\n  <ion-list>\n\n    <ion-item-sliding #item *ngFor="let contacto of Contactos">\n\n      <ion-item>\n\n        <ion-avatar item-start>\n\n          <img [src]="(contacto|FotoPipe)|urlSeguro:\'url\'" class="thumbmail">\n\n        </ion-avatar>\n\n        <div text-capitalize padding-top>\n\n          <h2 class="MarginTop5px" text-wrap>{{ contacto.displayName }}</h2>\n\n          <p *ngFor="let telefono of contacto.phoneNumbers">{{ telefono.value }} - {{ telefono.type }}</p>\n\n        </div>\n\n      </ion-item>\n\n      <ion-item-options side="left">\n\n        <button ion-button color="danger" (click)="EliminarContacto(contacto,item)">\n\n          Eliminar\n\n          <ion-icon name="trash"></ion-icon>\n\n        </button>\n\n      </ion-item-options>\n\n      <ion-item-options side="right">\n\n        <button ion-button color="default" (click)="CombinarContacto(contacto,item)">\n\n          Combinar\n\n          <ion-icon name="md-git-merge"></ion-icon>\n\n        </button>\n\n        <button ion-button color="secondary" (click)="MarcarContacto(contacto,item)">\n\n          Marcar\n\n          <ion-icon name="ios-checkbox-outline"></ion-icon>\n\n        </button>\n\n      </ion-item-options>\n\n    </ion-item-sliding>\n\n  </ion-list>\n\n</ion-content>'/*ion-inline-end:"D:\Desarrollos\Angular\Angular2\CURSO\DeviceInfoIonic\DeviceInfo2\src\pages\contactos\contactos.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* Platform */],
-            __WEBPACK_IMPORTED_MODULE_2__ionic_native_contacts__["d" /* Contacts */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* LoadingController */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2_ionic_angular__["h" /* NavController */],
+            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["i" /* NavParams */],
+            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["j" /* Platform */],
+            __WEBPACK_IMPORTED_MODULE_1__ionic_native_contacts__["d" /* Contacts */],
+            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["a" /* AlertController */],
+            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["f" /* LoadingController */],
+            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["g" /* MenuController */]])
     ], ContactosPage);
     return ContactosPage;
 }());
@@ -395,51 +441,6 @@ var ContactosPage = /** @class */ (function () {
 /***/ }),
 
 /***/ 203:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return OtroPage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(29);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-/**
- * Generated class for the OtroPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-var OtroPage = /** @class */ (function () {
-    function OtroPage(navCtrl, navParams) {
-        this.navCtrl = navCtrl;
-        this.navParams = navParams;
-    }
-    OtroPage.prototype.ionViewDidLoad = function () {
-        console.log('ionViewDidLoad OtroPage');
-    };
-    OtroPage = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-otro',template:/*ion-inline-start:"D:\Desarrollos\Angular\Angular2\CURSO\DeviceInfoIonic\DeviceInfo2\src\pages\otro\otro.html"*/'<!--\n\n  Generated template for the OtroPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n\n\n  <ion-navbar>\n\n    <ion-title>Otro</ion-title>\n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n\n\n<ion-content padding>\n\n\n\n</ion-content>\n\n'/*ion-inline-end:"D:\Desarrollos\Angular\Angular2\CURSO\DeviceInfoIonic\DeviceInfo2\src\pages\otro\otro.html"*/,
-        }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */]])
-    ], OtroPage);
-    return OtroPage;
-}());
-
-//# sourceMappingURL=otro.js.map
-
-/***/ }),
-
-/***/ 204:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -495,14 +496,59 @@ var InicioPage = /** @class */ (function () {
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
             selector: 'page-inicio',template:/*ion-inline-start:"D:\Desarrollos\Angular\Angular2\CURSO\DeviceInfoIonic\DeviceInfo2\src\pages\inicio\inicio.html"*/'<ion-header>\n\n\n\n  <ion-navbar>\n\n    <ion-title>Inicio</ion-title>\n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n\n\n<ion-content padding>\n\n\n\n  <ion-refresher (ionRefresh)="RefrescarPagina($event)">\n\n    <ion-refresher-content>Se esta refrescando la pagina....</ion-refresher-content>\n\n  </ion-refresher>\n\n  \n\n  <ion-card>\n\n    <ion-card-header>\n\n      Informacion del dispositivo\n\n    </ion-card-header>\n\n\n\n\n\n    <ion-list>\n\n      <button ion-item>\n\n        <ion-icon name="ios-phone-portrait-outline" item-start></ion-icon>\n\n          Marca de Celular: {{ Dispositivo.manufacturer }}\n\n      </button>\n\n      \n\n      <button ion-item>\n\n        <ion-icon name="md-barcode" item-start></ion-icon>\n\n          Modelo del Celular: {{ Dispositivo.model }}\n\n      </button>\n\n      \n\n      <button ion-item>\n\n        <ion-icon name="ios-body-outline" item-start></ion-icon>\n\n          Version de Cordova: {{ Dispositivo.cordova }}\n\n      </button>\n\n      \n\n      <button ion-item>\n\n        <ion-icon name="ios-create-outline" item-start></ion-icon>\n\n          Serial del Celular: {{ Dispositivo.serial }}\n\n      </button>\n\n       \n\n    </ion-list>\n\n  </ion-card>\n\n\n\n  <ion-card>\n\n    <ion-card-header>\n\n        Informacion de la Red\n\n    </ion-card-header>\n\n      <button ion-item>\n\n        <ion-icon name="md-git-network" item-start></ion-icon>\n\n          Serial del Celular: \n\n      </button>\n\n  </ion-card>\n\n\n\n</ion-content>'/*ion-inline-end:"D:\Desarrollos\Angular\Angular2\CURSO\DeviceInfoIonic\DeviceInfo2\src\pages\inicio\inicio.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */],
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */],
             __WEBPACK_IMPORTED_MODULE_2__ionic_native_device__["a" /* Device */]])
     ], InicioPage);
     return InicioPage;
 }());
 
 //# sourceMappingURL=inicio.js.map
+
+/***/ }),
+
+/***/ 204:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return OtroPage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(29);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+/**
+ * Generated class for the OtroPage page.
+ *
+ * See https://ionicframework.com/docs/components/#navigation for more info on
+ * Ionic pages and navigation.
+ */
+var OtroPage = /** @class */ (function () {
+    function OtroPage(navCtrl, navParams) {
+        this.navCtrl = navCtrl;
+        this.navParams = navParams;
+    }
+    OtroPage.prototype.ionViewDidLoad = function () {
+        console.log('ionViewDidLoad OtroPage');
+    };
+    OtroPage = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
+            selector: 'page-otro',template:/*ion-inline-start:"D:\Desarrollos\Angular\Angular2\CURSO\DeviceInfoIonic\DeviceInfo2\src\pages\otro\otro.html"*/'<!--\n\n  Generated template for the OtroPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n\n\n  <ion-navbar>\n\n    <ion-title>Otro</ion-title>\n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n\n\n<ion-content padding>\n\n\n\n</ion-content>\n\n'/*ion-inline-end:"D:\Desarrollos\Angular\Angular2\CURSO\DeviceInfoIonic\DeviceInfo2\src\pages\otro\otro.html"*/,
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */]])
+    ], OtroPage);
+    return OtroPage;
+}());
+
+//# sourceMappingURL=otro.js.map
 
 /***/ }),
 
@@ -577,8 +623,8 @@ var AppModule = /** @class */ (function () {
                 __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["d" /* IonicModule */].forRoot(__WEBPACK_IMPORTED_MODULE_3__app_component__["a" /* MyApp */], {}, {
                     links: [
                         { loadChildren: '../pages/contactos/contactos.module#ContactosPageModule', name: 'ContactosPage', segment: 'contactos', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/otro/otro.module#OtroPageModule', name: 'OtroPage', segment: 'otro', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/inicio/inicio.module#InicioPageModule', name: 'InicioPage', segment: 'inicio', priority: 'low', defaultHistory: [] }
+                        { loadChildren: '../pages/inicio/inicio.module#InicioPageModule', name: 'InicioPage', segment: 'inicio', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/otro/otro.module#OtroPageModule', name: 'OtroPage', segment: 'otro', priority: 'low', defaultHistory: [] }
                     ]
                 })
             ],
@@ -647,7 +693,7 @@ var MyApp = /** @class */ (function () {
     MyApp = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({template:/*ion-inline-start:"D:\Desarrollos\Angular\Angular2\CURSO\DeviceInfoIonic\DeviceInfo2\src\app\app.html"*/'<ion-nav [root]="rootPage"></ion-nav>\n\n'/*ion-inline-end:"D:\Desarrollos\Angular\Angular2\CURSO\DeviceInfoIonic\DeviceInfo2\src\app\app.html"*/
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* Platform */], __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */], __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__["a" /* SplashScreen */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* Platform */], __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */], __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__["a" /* SplashScreen */]])
     ], MyApp);
     return MyApp;
 }());
